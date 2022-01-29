@@ -1,0 +1,13 @@
+--------------------------------------------------
+           SCOTT ADAMS ADVENTURES 7-11
+--------------------------------------------------
+
+ 7) Mystery Fun House
+ 8) Pyramid of Doom
+ 9) Ghost Town
+10) Savage Island Part 1
+11) Savage Island Part 2
+
+All Adventure database files (c) 1979, 1980, 1981
+                                   Scott Adams
+

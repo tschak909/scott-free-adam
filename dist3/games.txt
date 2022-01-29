@@ -1,0 +1,12 @@
+--------------------------------------------------
+           SCOTT ADAMS ADVENTURES 12-15
+--------------------------------------------------
+
+12) Golden Voyage
+13) Sorceror of Claymore Castle
+14) Return to Pirate's Isle
+15) Adventures of Buckaroo Banzai
+
+All Adventure database files (c) 1981, 1984
+                             Scott Adams
+

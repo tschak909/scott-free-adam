@@ -1,0 +1,14 @@
+--------------------------------------------------
+           SCOTT ADAMS ADVENTURES 1-6
+--------------------------------------------------
+
+1) Adventureland
+2) Pirate Adventure
+3) Mission Impossible
+4) Voodoo Castle
+5) The Count
+6) Strange Odyssey
+
+All Adventure database files (c) 1978, 1979
+                             Scott Adams
+
