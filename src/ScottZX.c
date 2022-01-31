@@ -155,7 +155,7 @@ int Width;		/* Terminal width */
 
 #define MyLoc	(GameHeader.PlayerRoom)
 
-long BitFlags=0;	/* Might be >32 flags - I haven't seen >32 yet */
+unsigned long BitFlags=0;	/* Might be >32 flags - I haven't seen >32 yet */
 
 void restoreVDP(void)
 {
@@ -168,8 +168,7 @@ void restoreVDP(void)
 
 void ClearScreen ()
 {
-  clrscr();
-  
+  clrscr();  
   printf("\x1b[37m\x1b[40m");
   printf ("%c[2J",27);
 
@@ -1026,7 +1025,7 @@ doneit:				printf ("The game is now over.\n");
 				if(Items[LIGHT_SOURCE].Location==MyLoc)
 					Redraw=1;
 				Items[LIGHT_SOURCE].Location=CARRIED;
-				BitFlags&=~(1<<LIGHTOUTBIT);
+				BitFlags&=~(1L<<LIGHTOUTBIT);
 				break;
 			case 70:
 				//printf(TRS80_LINE);
@@ -1036,8 +1035,7 @@ doneit:				printf ("The game is now over.\n");
 				//OutReset();
 				break;
 			case 71:
-				//SaveGame();
-				printf("Save not implemented");
+				SaveGame();
 				break;
 			case 72:
 			{
@@ -1142,6 +1140,7 @@ doneit:				printf ("The game is now over.\n");
 				//wrefresh(Bottom);
 				//sleep(2);	/* DOC's say 2 seconds. Spectrum times at 1.5 */
 				// *** need to add a delay here
+			  sleep(2);
 				break;
 			case 89:
 				pptr++;
@@ -1476,12 +1475,10 @@ Coleco ADAM CP/M port by Thomas Cherryhomes\n\n");
 
 	LoadDatabase(f);
 	fclose(f);
-/*
 	if(argc==3)
 		LoadGame(argv[2]);
-*/
-	//srand(time(NULL)^getpid()^getuid());
-	//srand(time(NULL)^getpid());
+	srand((int)time(NULL));
+	srand((int)time(NULL));
 	Look();
 	while(1)
 	{
@@ -1510,7 +1507,7 @@ Coleco ADAM CP/M port by Thomas Cherryhomes\n\n");
 			GameHeader.LightTime--;
 			if(GameHeader.LightTime<1)
 			{
-				BitFlags|=(1<<LIGHTOUTBIT);
+				BitFlags|=(1L<<LIGHTOUTBIT);
 				if(Items[LIGHT_SOURCE].Location==CARRIED ||
 					Items[LIGHT_SOURCE].Location==MyLoc)
 				{
