@@ -704,19 +704,61 @@ int *vb,*no;
 	strcpy(NounText,noun);	/* Needed by GET/DROP hack */
 }
 
-/*
+
 void SaveGame()
 {
-	printf ("Save not implemented.\n");
+	char buf[256];
+	int ct;
+	FILE *f;
+	printf("Filename: ");
+	LineInput(buf);
+	printf("\n");
+	f=fopen(buf,"w");
+	if(f==NULL)
+	{
+		printf("Unable to create save file.\n");
+		return;
+	}
+	for(ct=0;ct<16;ct++)
+	{
+		fprintf(f,"%d %d\n",Counters[ct],RoomSaved[ct]);
+	}
+	fprintf(f,"%ld %d %hd %d %d %hd\n",BitFlags, (BitFlags&(1<<DARKBIT))?1:0,
+		MyLoc,CurrentCounter,SavedRoom,GameHeader.LightTime);
+	for(ct=0;ct<=GameHeader.NumItems;ct++)
+		fprintf(f,"%hd\n",(short)Items[ct].Location);
+	fclose(f);
+	printf("Saved.\n");
 }
-*/
 
-/*
 void LoadGame(char *name)
 {
-	printf ("Load not implemented.\n");
+	FILE *f=fopen(name,"r");
+	int ct=0;
+	short lo;
+	short DarkFlag;
+	if(f==NULL)
+	{
+		printf("Unable to restore game.");
+		return;
+	}
+	for(ct=0;ct<16;ct++)
+	{
+		fscanf(f,"%d %d\n",&Counters[ct],&RoomSaved[ct]);
+	}
+	fscanf(f,"%ld %d %hd %d %d %hd\n",
+		&BitFlags,&DarkFlag,&MyLoc,&CurrentCounter,&SavedRoom,
+		&GameHeader.LightTime);
+	/* Backward compatibility */
+	if(DarkFlag)
+		BitFlags|=(1<<15);
+	for(ct=0;ct<=GameHeader.NumItems;ct++)
+	{
+		fscanf(f,"%hd\n",&lo);
+		Items[ct].Location=(unsigned char)lo;
+	}
+	fclose(f);
 }
-*/
 
 int PerformLine(int ct)
 {
