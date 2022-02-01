@@ -1,11 +1,11 @@
- 5953 
+ 0 
  65 
  169 
  69 
  33 
  6 
  11 
- 13 
+ 3 
  3 
  125 
  75 
@@ -194,13 +194,13 @@
  0 
  10800 
  0 
- 4404 
- 682 
+ 4412 
+ 1242 
  0 
  0 
  0 
  0 
- 6900 
+ 1350 
  0 
  4407 
  82 
@@ -1313,7 +1313,7 @@
  0 
  0 
  10623 
- 0 
+ 7500 
  4366 
  0 
  0 
@@ -1373,17 +1373,17 @@
 "AUT"
 "ANY"
 "GO"
-"NORTH"
+"NOR"
 "*ENT"
-"SOUTH"
+"SOU"
 "*RUN"
-"EAST"
+"EAS"
 "*WAL"
-"WEST"
+"WES"
 "*CLI"
 "UP"
 "JUM"
-"DOWN"
+"DOW"
 "AT"
 "NET"
 "CHO"
@@ -1557,7 +1557,7 @@
  0 
  0 
  5 
- 7 
+ 0 
 "long down sloping hall"
  31 
  9 
@@ -1565,21 +1565,21 @@
  27 
  6 
  12 
-"large cavern"
+"."
  0 
  31 
  0 
  0 
  0 
  0 
-"large 8 sided room"
+"."
  7 
  0 
  0 
  0 
  20 
  0 
-"royal anteroom"
+"."
  26 
  29 
  0 
@@ -1600,81 +1600,77 @@
  0 
  0 
  13 
-"maze of pits"
+"."
  0 
  0 
  0 
  14 
  12 
  0 
-"maze of pits"
+"."
  17 
  12 
  13 
  16 
  16 
  17 
-"maze of pits"
+"."
  12 
  0 
  13 
  12 
  13 
  0 
-"maze of pits"
+"."
  0 
  17 
  0 
  0 
  14 
  17 
-"maze of pits"
+"."
  17 
  12 
  12 
  15 
  14 
  18 
-"maze of pits"
+"."
  0 
  0 
  0 
  0 
  17 
  0 
-"*I'm at the bottom of a very deep chasm. High above me is
-a pair of ledges. One has a bricked up window across its face
-the other faces a Throne-room"
+"."
  0 
  0 
  0 
  20 
  0 
  0 
-"*I'm on a narrow ledge by a chasm. Across the chasm is
-the Throne-room"
+"."
  0 
  0 
  0 
  0 
  0 
  9 
-"royal chamber"
+"."
  0 
  0 
  0 
  0 
  0 
  0 
-"*I'm on a narrow ledge by a Throne-room
-Across the chasm is another ledge"
+"."
  0 
  0 
  0 
  21 
  0 
  0 
-"throne room"
+"."
  0 
  1 
  10 
@@ -1710,8 +1706,7 @@ a pitchfork and pointed tail. ...Oh Hell!"
  0 
  0 
  0 
-"Memory chip of a COMPUTER!
-I took a wrong turn!"
+"."
  0 
  0 
  0 
@@ -1741,7 +1736,7 @@ don't think I want to go down"
  0 
  0 
  0 
-"long tunnel. I hear buzzing ahead"
+"."
  32 
  33 
  32 
@@ -1766,54 +1761,54 @@ unreadable letters over all the exits."
 "I can't its locked"
 "TIMBER. Something fell from the tree top & vanished in the swamp"
 "TIMBER!"
-"Lamp is off"
-"Lamp burns with a cold flameless blue glow."
+"Maybe I should read it?"
+"."
 "I'm bit by a spider"
 "
 My chigger bites are now INFECTED!
 "
 "My bites have rotted my whole body!"
-"Bear eats the honey and falls asleep."
-"Bees sting me"
+"."
+"."
 "First I need an empty container."
-"The bees all suffocated and disappeared"
+"."
 "Something I'm holding vibrates and..."
 "nothing to light it with"
-"Gas bladder blew up"
+"."
 "in my hands!"
 "gas needs to be contained before it will burn"
 "Gas dissipates. (I think you blew it)"
 "That won't ignite"
 "How?"
-"Bear won't let me"
-"`Don't waste honey, get mad instead! Dam lava!?`"
-"Bees madden bear, bear then attacks me!"
+"."
+"."
+"."
 "It soaks into the ground"
 "In 2 words tell me at what...like: AT TREE"
-"OH NO... Bear dodges... CRASH!"
+"."
 "Its heavy!"
 "Somethings too heavy. I fall."
 "To stop game say QUIT"
-"Mirror hits floor and shatters into a MILLION pieces"
-"Mirror lands softly on rug, lights up and says:"
+"."
+"."
 "You lost *ALL* treasures."
 "I'm not carrying ax, take inventory!"
 "It doesn't seem to bother him at all!"
 "The mud dried up and fell off."
-"Bear is so startled that he FELL off the ledge!"
-"` DRAGON STING ` and fades. I don't get it, I hope you do."
-"The bees attack the dragon which gets so annoyed it gets up
-and flys away..."
-"Lamp is now full & lit"
+"."
+"."
+"."
+"."
 "
 I'm bitten by chiggers.
 "
 "There's something there all right! Maybe I should go there?"
 "Maybe if I threw something?..."
 "Too dry, the fish died."
-"A glowing Genie appears, drops somehting, then vanishes."
-"A glowing Genie appears, says `Boy you're selfish`, takes
-something and then makes `ME` vanish!"
+"."
+"Purchase a copy of `ADVENTURELAND` from your favorite dealer
+today!
+"
 "No, its too hot."
 "Not here."
 "Try the swamp"
@@ -1829,11 +1824,11 @@ and any other verbs you can think of..."
 "Sorry, I can only throw the ax."
 "Medicine is good for bites."
 "I don't know where it is"
+"Welcome to Adventure International's Mini-Adventure Sampler!
+This is a small but complete Adventure. You must find the 3
+hidden Treasures and store them away! Say: `score` to see
+how well you're doing!
 "
-Welcome to Adventure number: 1 `ADVENTURELAND`.
-In this Adventure you're to find *TREASURES* & store them away.
-
-To see how well you're doing say: `SCORE`"
 "Blow it up!"
 "Fish have escaped back to the lake."
 "OK"
@@ -1842,13 +1837,14 @@ To see how well you're doing say: `SCORE`"
 "What?"
 "OK, I threw it."
 "
-Check with your favorite computer dealer for the next Adventure
-program: PIRATE ADVENTURE. If they don't carry `ADVENTURE` have
-them call: 1-305-862-6917 today!
+This Mini-Adventure is but a small sample of what awaits you in
+our Classic: ADVENTURELAND, which contains an additional 10
+treasures, magic carpets, killer bees, burning lava and much
+much more!
 "
 "The ax vibrated!"
 "I see nothing special"
-"Glowing *FIRESTONE*" 0 
+"." 0 
 "Dark hole" 4 
 "*Pot of RUBIES*/RUB/" 4 
 "Spider web with writing on it" 2 
@@ -1856,9 +1852,9 @@ them call: 1-305-862-6917 today!
 "Cypress tree" 1 
 "Water" 10 
 "Evil smelling mud/MUD/" 1 
-"*GOLDEN FISH*/FIS/" 10 
-"Lit brass lamp/LAM/" 0 
-"Old fashioned brass lamp/LAM/" 3 
+"Fish/FIS/" 10 
+"." 0 
+"." 0 
 "Rusty axe (Magic word `BUNYON` on it)/AXE/" 10 
 "Water in bottle/BOT/" 3 
 "Empty bottle/BOT/" 0 
@@ -1867,77 +1863,53 @@ them call: 1-305-862-6917 today!
 "Locked door" 5 
 "Open door with a hallway beyond" 0 
 "Swamp gas" 1 
-"*GOLDEN NET*/NET/" 18 
+"." 0 
 "Chigger bites" 0 
 "Infected chigger bites" 0 
 "Patches of `OILY` slime/OIL/" 1 
-"*ROYAL HONEY*/HON/" 8 
-"Large african bees" 8 
-"Very thin black bear" 21 
-"Bees in a bottle/BOT/" 0 
+"." 8 
+"." 0 
+"." 0 
+"." 0 
 "Large sleeping dragon" 23 
 "Flint & steel/FLI/" 30 
-"*Thick PERSIAN RUG*/RUG/" 17 
-"Sign: `magic word's AWAY! Look la...`
-(Rest of sign is missing!)" 18 
-"Distended gas bladder/BLA/" 0 
-"Bricked up window" 20 
+"." 0 
+"." 0 
+"." 0 
+"." 0 
 "Sign here says `In many cases mud is good. In others...`" 23 
-"Stream of lava" 18 
-"Bricked up window with a hole in it" 0 
-"Loose fire bricks/BRI/" 0 
-"*GOLD CROWN*/CRO/" 22 
-"*MAGIC MIRROR*" 21 
-"Sleeping bear" 0 
-"Empty wine bladder/BLA/" 9 
-"Broken glass/GLA/" 0 
+"." 0 
+"." 0 
+"." 0 
+"." 0 
+"." 0 
+"." 0 
+"." 0 
+"." 0 
 "Chiggers/CHI/" 1 
-"Slightly woozy bear" 0 
-"*DRAGON EGGS* (very rare)/EGG/" 0 
-"Lava stream with brick dam" 0 
+"." 0 
+"." 0 
+"." 0 
 "*JEWELED FRUIT*/FRU/" 25 
 "*Small statue of a BLUE OX*/OX/" 26 
-"*DIAMOND RING*/RIN/" 0 
-"*DIAMOND BRACELET*/BRA/" 0 
-"Strange scratchings on rock says: `ALADIN was here`" 14 
+"." 0 
+"." 0 
+"." 0 
 "Sign says `LIMBO. Find right exit and live again!`" 33 
-"Smoking hole. pieces of dragon and gore." 0 
+"." 0 
 "Sign says `No swimming allowed here`" 10 
 "Arrow pointing down" 17 
 "Dead fish/FIS/" 0 
-"*FIRESTONE* (cold now)/FIR/" 0 
+"." 0 
 "Sign says `Paul's place`" 25 
 "Trees" 11 
-"Sign here says `Opposite of LIGHT is UNLIGHT`" 12 
-"Empty lamp/LAM/" 0 
-"Muddy worthless old rug/RUG/" 0 
+"." 0 
+"." 0 
+"." 0 
 "Large outdoor Advertisement/ADV/" 29 
 "Hole" 29 
 "" 0 
 "" 0 
-"FISH ESCAPE"
-"DIE BITES"
-"BITE INFECT"
-"BEES DIE"
-"HIT MIRROR"
-"IN HADES"
-"MUD OFF"
-"BIT CHIG"
-"BEE STING"
-"LITE"
-"FISH DIE"
-"MOVE OX"
-"GET CHIG"
-"MUD DRAGON"
-"BLAST WALL"
-"BLAS DRAGON"
-"1ST MIRROR CLUE"
-"BEAR MAD"
-"RESET BLAST"
-"INTRO"
-"2ND MIRROR CLUE"
-"DEAD LAMP"
-"MUDDY RUG"
 ""
 ""
 ""
@@ -1971,7 +1943,6 @@ them call: 1-305-862-6917 today!
 ""
 ""
 ""
-"BUILD DAM"
 ""
 ""
 ""
@@ -2085,6 +2056,30 @@ them call: 1-305-862-6917 today!
 ""
 ""
 ""
- 416 
- 1 
- 819 
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+ 101 
+ 65 
+ 0 

@@ -1975,7 +1975,7 @@
  0 
  0 
  7 
-"*I'm in a one man scoutship"
+"one man scoutship"
  0 
  0 
  0 
@@ -2223,7 +2223,7 @@ Dedicated to the Novaks.
 "OK"
 "Pressure gauge says"
 "moves till suit air expended. Air outside suit is"
-"The outside has a pressure gauge and a connecter for a hose."
+"The outside has a pressure gauge & a connecter for a hose."
 "breathable."
 "not"
 "Stale air is"
@@ -2239,7 +2239,7 @@ Phaser is set on:"
 "
 My suit popped open!"
 "Warning light says: `POWER CRYSTAL DAMAGED`"
-"Blue button marked `BLAST OFF` and an unmarked red button"
+"Blue button marked `BLAST OFF` & a unmarked red button"
 "Console replies: `INSUFFICIENT POWER`"
 "Alien script covers it"
 "I fire the Phaser,"
@@ -2276,11 +2276,11 @@ CRYSTALLINE snap!"
 "The Ice Hound burrows off..."
 "Ice fills back in around me as I dig my way in. The
 pick broke but I made it!"
-"Ice is very smooth and hard!"
+"Ice is very smooth & hard!"
 "I slide back down."
 "I don't know where to look"
 "Try: `SHOOT SOMETHING`"
-"Say again and use a color"
+"Say again & use a color"
 "There's writing there"
 "I can't do that"
 "Whooosh!"
@@ -2295,7 +2295,7 @@ pick broke but I made it!"
 "A gentle touch will work wonders!"
 "It should fit. It has a large buckle."
 "Painting is of an Alien twisting a buckle on a belt."
-"Wiring behind plastic shorts and I'm electrocuted!"
+"Wiring behind plastic shorts & I'm electrocuted!"
 "I see a picture of an ALIEN TENTACLE."
 "Wonderful. It ATE me!"
 "It is of an alien being."
@@ -2337,7 +2337,7 @@ Have you gotten your Adventure T-SHIRT yet?
 "Empty flask/FLAS/" 0 
 "Red button by door" 2 
 "Closed outer door" 2 
-"Open outer door" 0 
+"OPen outer door" 0 
 "Closed inner door" 0 
 "Open inner door" 2 
 "Alien machine" 11 
@@ -2364,7 +2364,7 @@ Have you gotten your Adventure T-SHIRT yet?
 "* RIGILIAN ICE DIAMOND */DIAM/" 24 
 "* STRANGE ALIEN BELT */BELT/" 0 
 "which I'm wearing" 0 
-"and its activated" 0 
+"& its activated" 0 
 "* RARE ALIEN PAINTING */PAIN/" 13 
 "Rock dust/DUST/" 0 
 "Centurion Slime Trees" 15 

@@ -1,12 +1,12 @@
 --------------------------------------------------
-           SCOTT ADAMS ADVENTURES 12-15
+      SCOTT ADAMS ADVENTURES DISK 3: 11-15
 --------------------------------------------------
 
-12) Golden Voyage
-13) Sorceror of Claymore Castle
-14) Return to Pirate's Isle
-15) Adventures of Buckaroo Banzai
+ 11) Savage Island, Part II
+ 12) The Golden Voyage
+ 13) Sorcerer of Claymorgue Castle
+ 14) Return to Pirate's Isle
+ 15) Adventures of Buckaroo Banzai
 
-All Adventure database files (c) 1981, 1984
-                             Scott Adams
+ All Games are Copyright Scott Adams 1978-1984
 

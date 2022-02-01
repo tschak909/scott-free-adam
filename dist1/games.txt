@@ -1,14 +1,12 @@
 --------------------------------------------------
-           SCOTT ADAMS ADVENTURES 1-6
+       SCOTT ADAMS ADVENTURES DISK 1: 1-5
 --------------------------------------------------
 
-1) Adventureland
-2) Pirate Adventure
-3) Mission Impossible
-4) Voodoo Castle
-5) The Count
-6) Strange Odyssey
+ 1) Adventureland
+ 2) Pirate Adventure
+ 3) Secret Mission
+ 4) Voodoo Castle
+ 5) The Count
 
-All Adventure database files (c) 1978, 1979
-                             Scott Adams
+ All Games are Copyright Scott Adams 1978-1984
 

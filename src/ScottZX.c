@@ -43,8 +43,13 @@ Examples:
 
 #include "Scottzx.h"
 
+#ifndef GENERIC
 #include <msx.h>
 #include <conio.h>
+
+	#define fputc_cons(a) printf("%c",a)
+	#define fgetc_cons() fgetc(stdin)
+#endif
 
 #ifdef __Z88DK__
 	#include <malloc.h>
@@ -150,8 +155,11 @@ int Width;		/* Terminal width */
 
 
 
-//#define TRS80_LINE	"\n<------------------------------------------------------------>\n"
-#define TRS80_LINE	"\n<------------------------------------------------->\n"
+#ifdef GENERIC
+#define TRS80_LINE	"\n\n<------------------------------------------------------------>\n\n"
+#else
+#define TRS80_LINE	"\n\n<------------------------------------------------->\n\n"
+#endif
 
 #define MyLoc	(GameHeader.PlayerRoom)
 
@@ -159,16 +167,20 @@ unsigned long BitFlags=0;	/* Might be >32 flags - I haven't seen >32 yet */
 
 void restoreVDP(void)
 {
+#ifndef GENERIC
   printf("\nPress any key to return to CP/M");
   fgetc_cons();
 #asm
   CALL $DA66
 #endasm
+#endif
 }
 
 void ClearScreen ()
 {
-  clrscr();  
+#ifndef GENERIC
+  clrscr();
+#endif
   printf("\x1b[37m\x1b[40m");
   printf ("%c[2J",27);
 
@@ -176,8 +188,6 @@ void ClearScreen ()
 
 void Fatal(char *x)
 {
-	//if(DisplayUp)
-		//endwin();
 	fprintf(stderr,"%s.\n",x);
 	restoreVDP();
 	exit(1);
@@ -185,12 +195,8 @@ void Fatal(char *x)
 
 void *MemAlloc(int size)
 {
-	//printf("\nReserving %u bytes\n",size);
-
-	//void *t=(void *)malloc(size);
 	tmem=(void *)malloc(size);
 	if(tmem==NULL)
-//	if(tmem==0)
 		Fatal("Out of memory");
 	return(tmem);
 }
@@ -267,7 +273,6 @@ oops:	do
 	while(c!=EOF && isspace(c));
 	if(c!='"')
 	{
-		//printf("\n#%s#\n",tmp);
 		Fatal("Initial quote expected");
 	}
 	do
@@ -309,7 +314,6 @@ void LoadDatabase(FILE *f)
 #ifdef DEBUG
   printf ("Loading\n");
 #endif
-	//if(fscanf(f,"%*d %d %d %d %d %d %d %d %d %d %d %d",
 	if(fscanf(f,"%*u %u %u %u %u %u %u %u %u %u %u %u",
 		&ni,&na,&nw,&nr,&mc,&pr,&tr,&wl,&lt,&mn,&trm,&ldct)<10)
 		Fatal("Invalid database(bad header)");
@@ -353,7 +357,6 @@ void LoadDatabase(FILE *f)
 #endif
 	while(ldct<na+1)
 	{
-		//if(fscanf(f,"%hd %hd %hd %hd %hd %hd %hd %hd",
 		if(fscanf(f,"%u %u %u %u %u %u %u %u",
 			&ap->Vocab,
 			&ap->Condition[0],
@@ -388,7 +391,6 @@ void LoadDatabase(FILE *f)
 #endif
 	while(ldct<nr+1)
 	{
-		//fscanf(f,"%hd %hd %hd %hd %hd %hd",
 		fscanf(f,"%u %u %u %u %u %u",
 			&rp->Exits[0],&rp->Exits[1],&rp->Exits[2],
 			&rp->Exits[3],&rp->Exits[4],&rp->Exits[5]);
@@ -423,7 +425,6 @@ void LoadDatabase(FILE *f)
 			if(t!=NULL)
 				*t=0;
 		}
-		//fscanf(f,"%hd",&lo);
 		fscanf(f,"%d",&lo);
 		ip->Location=(unsigned char)lo;
 		ip->InitialLoc=ip->Location;
@@ -437,13 +438,10 @@ void LoadDatabase(FILE *f)
 		free(ReadString(f));
 		ldct++;
 	}
-	//fscanf(f,"%d",&ldct);
 	fscanf(f,"%u",&ldct);
 #ifdef DEBUG
-		//printf("Version %d.%02d of Adventure ",	ldct/100,ldct%100);
 		printf("Version %u.%02u of Adventure ",	ldct/100,ldct%100);
 #endif
-	//fscanf(f,"%d",&ldct);
 	fscanf(f,"%u",&ldct);
 #ifdef DEBUG
 		printf("%u.\nLoad Complete.\n\n",ldct);
@@ -461,36 +459,27 @@ void Look()
 	int ct,f;
 	int pos;
 	
-	//fputc(12,stdout);
 	printf(TRS80_LINE);
 
-	//wmove(Top,0,0);	/* Needed by some curses variants */
 	if((BitFlags&(1<<DARKBIT)) && Items[LIGHT_SOURCE].Location!= CARRIED
 	            && Items[LIGHT_SOURCE].Location!= MyLoc)
 	{
-		//if(Options&YOUARE)
 		#ifdef YOUARE
 			printf("You can't see. It is too dark!\n");
 		#else
 			printf("I can't see. It is too dark!\n");
 		#endif
-		//if (Options & TRS80_STYLE)
 			printf(TRS80_LINE);
-		//wrefresh(Top);
 		return;
 	}
 	r=&Rooms[MyLoc];
 	if(*r->Text=='*')
-		//printf("%s\n",r->Text+1);
 		printf("%s\n",r->Text+1);
 	else
 	{
-		//if(Options&YOUARE)
 		#ifdef YOUARE
-			//printf("You are %s\n",r->Text);
 			printf("You are in a %s\n",r->Text);
 		#else
-			//printf("I'm in a %s\n",r->Text);
 			printf("I'm in a %s\n",r->Text);
 		#endif
 	}
@@ -523,7 +512,6 @@ void Look()
 		{
 			if(f==0)
 			{
-				//if(Options&YOUARE)
 				#ifdef YOUARE
 					printf("\nYou can also see: ");
 				#else
@@ -532,13 +520,6 @@ void Look()
 				pos=16;
 				f++;
 			}
-			/*
-			else if (!(Options & TRS80_STYLE))
-			{
-				printf(" - ");
-				pos+=3;
-			}
-			*/
 			if(pos+strlen(Items[ct].Text)>(Width-10))
 			{
 				pos=0;
@@ -548,24 +529,18 @@ void Look()
 			printf("%s ",Items[ct].Text);
 			printf ("%c[%um",27,37);
 			pos += strlen(Items[ct].Text);
-			//if (Options & TRS80_STYLE)
-			//{
 				printf(". ");
 				pos+=2;
-			//}
 		}
 		ct++;
 	}
 	printf("\n");
-	//if (Options & TRS80_STYLE)
 		printf(TRS80_LINE);
-	//wrefresh(Top);
 }
 
 int WhichWord(char *word, char **list)
 {
 	int n=1;
-	//char *tp;
 	ne=1;
 	
 	while(ne<=GameHeader.NumWords)
@@ -590,9 +565,6 @@ void LineInput(char *buf)
 	int ch;
 	while(1)
 	{
-		//wrefresh(Bottom);
-		//ch=wgetch(Bottom);
-		//ch=getch();
 		ch=fgetc_cons();
 		switch(ch)
 		{
@@ -604,8 +576,6 @@ void LineInput(char *buf)
 			case 13:;
 				buf[pos]=0;
 				buf[pos+1]=0;
-				//scroll(Bottom);
-				//wmove(Bottom,BottomHeight,0);
 				fputc(13,stdout);
 				return;
 			case 8:;
@@ -615,22 +585,9 @@ void LineInput(char *buf)
 			case 12:;
 				if(pos>0)
 				{
-					/*
-					int y,x;
-					getyx(Bottom,y,x);
-					x--;
-					if(x==-1)
-					{
-						x=Width-1;
-						y--;
-					}
-					*/
 					fputc(8,stdout);
 					fputc(' ',stdout);
 					fputc(8,stdout);
-					//mvwaddch(Bottom,y,x,' ');
-					//wmove(Bottom,y,x);
-					//wrefresh(Bottom);
 					pos--;
 				}
 				break;
@@ -639,8 +596,6 @@ void LineInput(char *buf)
 				if(ch>=' '&&ch<=126)
 				{
 					buf[pos++]=ch;
-					//waddch(Bottom,(char)ch);
-					//wrefresh(Bottom);
 					fputc((char)ch,stdout);
 				}
 				break;
@@ -659,9 +614,7 @@ int *vb,*no;
 		do
 		{
 			printf ("\nTell me what to do ? ");
-			//wrefresh(Bottom);
 			LineInput(buf);
-			//OutReset();
 			num=sscanf(buf,"%9s %9s",verb,noun);
 		}
 		while(num==0||*buf=='\n');
@@ -677,12 +630,10 @@ int *vb,*no;
 				case 'w':strcpy(verb,"WEST");break;
 				case 'u':strcpy(verb,"UP");break;
 				case 'd':strcpy(verb,"DOWN");break;
-				/* Brian Howarth interpreter also supports this */
 				case 'i':strcpy(verb,"INVENTORY");break;
 			}
 		}
 		nc=WhichWord(verb,Nouns);
-		/* The Scott Adams system has a hack to avoid typing 'go' */
 		if(nc>=1 && nc <=6)
 		{
 			vc=1;
@@ -926,7 +877,6 @@ int PerformLine(int ct)
 				BitFlags&=~(1<<param[pptr++]);
 				break;
 			case 61:
-				//if(Options&YOUARE)
 				#ifdef YOUARE
 					printf ("You are dead.\n");
 				#else
@@ -946,9 +896,6 @@ int PerformLine(int ct)
 			}
 			case 63:
 doneit:				printf ("The game is now over.\n");
-				//wrefresh(Bottom);
-				//sleep(5);
-				//endwin();
 			  restoreVDP();
 				exit(0);
 			case 64:
@@ -965,7 +912,6 @@ doneit:				printf ("The game is now over.\n");
 					  	n++;
 					cnt++;
 				}
-				//if(Options&YOUARE)
 				#ifdef YOUARE
 					printf ("You have stored ");
 				#else
@@ -983,7 +929,6 @@ doneit:				printf ("The game is now over.\n");
 			{
 				int cnt=0;
 				int f=0;
-				//if(Options&YOUARE)
 				#ifdef YOUARE
 					printf ("You are carrying:\n");
 				#else
@@ -995,13 +940,9 @@ doneit:				printf ("The game is now over.\n");
 					{
 						if(f==1)
 						{
-							//if (Options & TRS80_STYLE)
 								printf (". ");
-							//else
-							//	printf (" - ");
 						}
 						f=1;
-						//printf ("%s",Items[cnt].Text);
 						printf ("%c[%um",27,34);
 						printf("%s ",Items[cnt].Text);
 						printf ("%c[%um",27,37);
@@ -1028,11 +969,7 @@ doneit:				printf ("The game is now over.\n");
 				BitFlags&=~(1L<<LIGHTOUTBIT);
 				break;
 			case 70:
-				//printf(TRS80_LINE);
-				//fputc(12,stdout);
-
 				ClearScreen(); /* pdd. */
-				//OutReset();
 				break;
 			case 71:
 				SaveGame();
@@ -1136,17 +1073,10 @@ doneit:				printf ("The game is now over.\n");
 				break;
 			}
 			case 88:
-				//wrefresh(Top);
-				//wrefresh(Bottom);
-				//sleep(2);	/* DOC's say 2 seconds. Spectrum times at 1.5 */
-				// *** need to add a delay here
 			  sleep(2);
 				break;
 			case 89:
 				pptr++;
-				/* SAGA draw picture n */
-				/* Spectrum Seas of Blood - start combat ? */
-				/* Poking this into older spectrum games causes a crash */
 				break;
 			default:
 				fprintf(stderr,"Unknown action %u [Param begins %u %u]\n",
@@ -1189,19 +1119,14 @@ int PerformActions(int vb,int no)
 		}
 		if(d)
 		{
-			//if(Options&YOUARE)
 			#ifdef YOUARE
 				printf ("You fell down and broke your neck. ");
 			#else
 				printf ("I fell down and broke my neck. ");
 			#endif
-			//wrefresh(Bottom);
-			//sleep(5);
-			//endwin();
 				restoreVDP();
 			exit(0);
 		}
-		//if(Options&YOUARE)
 		#ifdef YOUARE
 			printf ("You can't go in that direction. ");
 		#else
@@ -1306,7 +1231,6 @@ int PerformActions(int vb,int no)
 				}
 				if(CountCarried()==GameHeader.MaxCarry)
 				{
-					//if(Options&YOUARE)
 					#ifdef YOUARE
 						printf ("You are carrying too much. ");
 					#else
@@ -1317,7 +1241,6 @@ int PerformActions(int vb,int no)
 				i=MatchUpItem(NounText,MyLoc);
 				if(i==-1)
 				{
-					//if(Options&YOUARE)
 					#ifdef YOUARE
 						printf ("It is beyond your power to do that. ");
 					#else
@@ -1369,7 +1292,6 @@ int PerformActions(int vb,int no)
 				i=MatchUpItem(NounText,CARRIED);
 				if(i==-1)
 				{
-					//if(Options&YOUARE)
 					#ifdef YOUARE
 						printf ("It's beyond your power to do that.\n");
 					#else
@@ -1401,7 +1323,7 @@ void display_games_txt(void)
       char buf[128];
       unsigned short l = fread(buf,sizeof(char),sizeof(buf),fp);
       for (unsigned short i=0;i<l;i++)
-	fputc_cons(buf[i]);
+	putchar(buf[i]);
     }
 
   fclose(fp);
@@ -1419,7 +1341,6 @@ void main(int argc, char *argv[])
 	heapinit(HPSIZE);
 #endif
 
-	//printf ("%c[2J",27);
 	ClearScreen();
 	display_games_txt();
 	do
@@ -1431,39 +1352,12 @@ void main(int argc, char *argv[])
 		f=fopen(fname,"r");
 	}
 	while (f == NULL);
-	
+
+#ifdef GENERIC
+	Width = 80;
+#else
 	Width = 51;
-
-/*
-	if (Options & TRS80_STYLE)
-	{
-		Width = 64;
-		TopHeight = 11;
-		BottomHeight = 13;
-	}
-	else
-	{
-		Width = 80;
-		TopHeight = 10;
-		BottomHeight = 14;
-	}
-*/
-
-/*
-	DisplayUp=1;
-	initscr();
-	Top=newwin(TopHeight,Width,0,0);
-	Bottom=newwin(BottomHeight,Width,TopHeight,0);
-	scrollok(Bottom,TRUE);
-	leaveok(Top,TRUE);
-	leaveok(Bottom,FALSE);
-	idlok(Bottom,TRUE);
-	noecho();
-	cbreak();
-	wmove(Bottom,BottomHeight-1,0);
-	//OutReset();
-*/
-	//fputc(12,stdout);
+#endif
 	printf ("%c[2J",27);
 	printf ("\
 Scott Free, A Scott Adams game driver in C.\n\
@@ -1475,8 +1369,17 @@ Coleco ADAM CP/M port by Thomas Cherryhomes\n\n");
 
 	LoadDatabase(f);
 	fclose(f);
-	if(argc==3)
-		LoadGame(argv[2]);
+
+	printf("Load a previously saved game ?  ");
+	LineInput(buf);
+	
+	if (strncasecmp(buf,"y",1) == 0)
+	  {
+	    printf("Game Filename ?  ");
+	    LineInput(buf);
+	    LoadGame(buf);
+	  }
+	
 	srand((int)time(NULL));
 	srand((int)time(NULL));
 	Look();
