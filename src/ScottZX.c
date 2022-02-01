@@ -46,9 +46,6 @@ Examples:
 #ifndef GENERIC
 #include <msx.h>
 #include <conio.h>
-#else
-#define fputc_cons(a) printf("%c",a)
-#define fgetc_cons() fgetc(stdin)
 #endif
 
 #ifdef __Z88DK__
