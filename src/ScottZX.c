@@ -46,9 +46,9 @@ Examples:
 #ifndef GENERIC
 #include <msx.h>
 #include <conio.h>
-
-	#define fputc_cons(a) printf("%c",a)
-	#define fgetc_cons() fgetc(stdin)
+#else
+#define fputc_cons(a) printf("%c",a)
+#define fgetc_cons() fgetc(stdin)
 #endif
 
 #ifdef __Z88DK__
@@ -577,6 +577,7 @@ void LineInput(char *buf)
 				buf[pos]=0;
 				buf[pos+1]=0;
 				fputc(13,stdout);
+				fputc(10,stdout);
 				return;
 			case 8:;
 

@@ -10,7 +10,7 @@ SRCS := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.asm)
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
 DEPS := $(OBJS:.o=.d)
 
-CFLAGS=+cpm -subtype=adam -O3 -D__Z88DK__ -DDEBUG
+CFLAGS=+cpm -subtype=adam -D__Z88DK__ -DDEBUG
 LDFLAGS=+cpm -subtype=adam -o$(TARGET_EXEC) -pragma-need=ansiterminal -pragma-define:ansicolumns=51
 ASFLAGS=+cpm -subtype=adam
 
